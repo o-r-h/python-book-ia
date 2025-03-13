@@ -1,0 +1,71 @@
+The goal for this project is to build an AI that suggests books based on user preferences.
+
+## Requirements
+- Python 3.12.3
+- pip 24.2.1
+- scikit-learn
+- TensorFlow
+
+## Data
+- The data is in the `data` folder.
+- The data is in the form of CSV files.
+- This are the fields in csv file:
+FieldName	FieldDefinition
+----------------------------------
+bookId	Book Identifier as in goodreads.com
+title	Book title
+series	Series Name
+author	Book's Author
+rating	Global goodreads rating
+description	Book's description
+language	Book's language
+isbn	Book's ISBN
+genres	Book's genres
+characters	Main characters
+bookFormat	Type of binding
+edition	Type of edition (ex. Anniversary Edition)
+pages	Number of pages
+publisher	Editorial
+publishDate	publication date
+firstPublishDate	Publication date of first edition
+awards	List of awards
+numRatings	Number of total ratings
+ratingsByStars	Number of ratings by stars
+likedPercent	Derived field, percent of ratings over 2 starts (as in GoodReads)
+setting	Story setting
+coverImg	URL to cover image
+bbeScore	Score in Best Books Ever list
+bbeVotes	Number of votes in Best Books Ever list
+price	Price
+----------------------------------
+
+## Methods
+- Use pandas to read the csv files.
+- We will use a Hybrid Model combining Collaborative Filtering and Content-Based Filtering for the recommendation system.
+- Use scikit-learn for collaborative filtering and content-based filtering components.
+- Add TensorFlow for neural network-based enhancements.
+
+## Steps
+- Read the csv files.
+- Clean the data.
+- Build the Hybrid Model.
+  - Collaborative Filtering: Leverage user ratings and interactions.
+  - Content-Based Filtering: Use book metadata (genres, authors, etc.).
+- Train the model.
+- Test the model using a train-test split.
+- Suggest books based on user preferences.
+
+## Output
+- The output will be a csv file with the suggested books and metadata explaining the recommendation.
+
+## License
+- MIT License
+
+## Contributing
+- Pull requests are welcome.
+
+## Authors
+- Omar Rodriguez
+
+## Acknowledgments
+- Best Books Ever

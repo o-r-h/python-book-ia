@@ -1,0 +1,23 @@
+# Entornos virtuales
+venv/
+.env
+.venv/
+
+# Archivos de caché
+__pycache__/
+*.pyc
+*.pyo
+
+# Configuración del editor
+.vscode/
+.idea/
+
+# Archivos de logs y bases de datos temporales
+*.log
+*.sqlite3
+
+# Modelos o datos pesados
+*.h5
+*.pkl
+*.csv
+*.json
