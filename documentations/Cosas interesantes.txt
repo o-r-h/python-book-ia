@@ -1,0 +1,91 @@
+//No autocompletar este archivo. No tomar en cuenta para el chat
+Porque se crea una matrix binaria
+facilita el procesamiento y la clasificación de datos
+ejemplo
+
+Título	Géneros
+Book A	Fantasy, Drama
+Book B	Horror, Mystery
+Book C	Fantasy, Mystery
+
+Una matrix binaria
+Título	Fantasy	Drama	Horror	Mystery
+Book A	  1	     1	     0	     0
+Book B	  0	     0	     1	     1
+Book C	  1	     0	     0	     1
+
+Con esto se puede aplicar algoritmos de recomendación
+Similitud del coseno
+k-Nearest Neighbors
+
+Analicemos 
+---------------------------------------------------
+Entre Book A y Book B:
+Vectores: A = [1,1,0,0], B = [0,0,1,1]
+Producto punto: (1×0) + (1×0) + (0×1) + (0×1) = 0
+Magnitud de A: √(1² + 1² + 0² + 0²) = √2
+Magnitud de B: √(0² + 0² + 1² + 1²) = √2
+Similitud del coseno = 0/(√2×√2) = 0/2 = 0
+
+Entre Book A y Book C:
+Vectores: A = [1,1,0,0], C = [1,0,0,1]
+Producto punto: (1×1) + (1×0) + (0×0) + (0×1) = 1
+Magnitud de A: √(1² + 1² + 0² + 0²) = √2
+Magnitud de C: √(1² + 0² + 0² + 1²) = √2
+Similitud del coseno = 1/(√2×√2) = 1/2 = 0.5
+---------------------------------------------------
+Con similitud del coseno 0.5, Book A y Book C son similares
+En cambio si se usa k-Nearest Neighbors este usa esa similitud 
+para hacer predicciones o recomendaciones basadas en los k vecinos más cercanos
+
+Ahora tenemos dos matrices, (Libros y generos) y    (autores y libros)
+las concatenamos y tenemos una matriz de caracteristicas 
+Titulo  Fantasy	Drama	Horror	Mystery	Autor 1	Autor 2	Autor 3	Rating
+Book A  1	    1	    0	    0	    1	     0	    0	    0.85
+Book B  0	    0	    1	    1	    0	     1	    0	    0.70
+Book C  1	    0	    0	    1	    0	     1	    1	    0.92
+
+pd.concat([genre_matrix, author_matrix, df["normalized_rating"]], axis=1)
+Cada fila representa un libro, cada columna una caracteristica, se usa
+axis=1 para concatenar horizontalmente por libro.
+
+# Collaborative Filtering: Use Nearest Neighbors on user ratings
+collab_model = NearestNeighbors(metric="cosine", algorithm="brute")
+collab_model.fit(df[["rating"]])
+_, collab_indices = collab_model.kneighbors(df[["rating"]], n_neighbors=5)
+
+1. Se crea un modelo NearestNeighbors con la métrica de similitud coseno (cosine) y el algoritmo brute-force (brute).
+2. Se entrena (fit) el modelo usando la columna "rating" del DataFrame (df[["rating"]]).
+3. Se usa kneighbors para encontrar los 5 libros más similares a cada libro basándose en la similitud de sus calificaciones.
+4. Esto devuelve _ (distancias, que no se usan) y collab_indices (índices de los libros más similares).
+
+
+# Content-Based Filtering: Use Nearest Neighbors on book features
+content_model = NearestNeighbors(metric="cosine", algorithm="brute")
+content_model.fit(feature_matrix)
+_, content_indices = content_model.kneighbors(feature_matrix, n_neighbors=5)
+
+1. Se crea un modelo NearestNeighbors con la métrica de similitud coseno (cosine) y el algoritmo brute-force (brute).
+2. Se entrena (fit) el modelo usando la matriz de características (feature_matrix).
+3. Se usa kneighbors para encontrar los 5 libros más similares a cada libro basándose en la similitud de sus características.
+4. Esto devuelve _ (distancias, que no se usan) y content_indices (índices de los libros más similares).
+
+
+# Hybrid Model: Combine top recommendations from both approaches
+hybrid_recommendations = []
+for i in range(len(df)):
+    try:
+        collab_recs = df.iloc[collab_indices[i]]["title"].tolist()
+        content_recs = df.iloc[content_indices[i]]["title"].tolist()
+        hybrid_recs = list(set(collab_recs + content_recs))[:5]  # Combine and deduplicate
+        hybrid_recommendations.append(hybrid_recs)
+    except IndexError:
+        # Skip invalid indices
+        continue
+
+1. Se crea una lista vacía hybrid_recommendations para almacenar las recomendaciones.
+2. Se itera sobre cada libro en el DataFrame (len(df)).
+3. Para cada libro, se obtienen las 5 recomendaciones de Collaborative Filtering (collab_recs) y Content-Based Filtering (content_recs).
+4. Se combina y deduplica la lista de recomendaciones (hybrid_recs) para obtener 5 recomendaciones únicas.
+5. Se agrega la lista de recomendaciones al hybrid_recommendations.
+6. Si ocurre un error (IndexError), se salta el índice inválido.

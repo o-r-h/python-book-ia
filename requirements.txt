@@ -1,16 +1,16 @@
-The goal for this project is to build an AI that suggests books based on user preferences.
-
 ## Requirements
 - Python 3.12.3
 - pip 24.2.1
 - scikit-learn
 - TensorFlow
+- psycopg2
+- python-dotenv
 
 ## Data
 - The data is in the `data` folder.
 - The data is in the form of CSV files.
 - This are the fields in csv file:
-FieldName	FieldDefinition
+- FieldName	FieldDefinition
 ----------------------------------
 bookId	Book Identifier as in goodreads.com
 title	Book title

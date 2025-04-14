@@ -1,0 +1,120 @@
+Aprender Pandas
+https://www.w3schools.com/python/pandas/default.asp
+
+    1. Sugerir libros en base a preferencias del usuario
+        ◦ Algoritmo: Random Forest, K-Nearest Neighbors (KNN), o Sistemas de Recomendación basados en Filtrado Colaborativo.
+        ◦ Librerías: Scikit-learn, Surprise, TensorFlow.
+        ◦ Ejemplo: Usar un modelo de recomendación basado en las preferencias previas del usuario y las calificaciones de otros usuarios similares.
+    
+    2. Clasificación de texto (por ejemplo, detectar intenciones en un chatbot)
+        ◦ Algoritmo: Naive Bayes, Support Vector Machines (SVM), o Redes Neuronales (LSTM, Transformers).
+        ◦ Librerías: NLTK, SpaCy, TensorFlow, PyTorch, Hugging Face Transformers.
+        ◦ Ejemplo: Clasificar las entradas del usuario en categorías como "saludo", "pregunta", "queja", etc.
+    
+    3. Generación de respuestas automáticas en un chatbot
+        ◦ Algoritmo: Seq2Seq (Sequence-to-Sequence), GPT (Generative Pre-trained Transformer).
+        ◦ Librerías: TensorFlow, PyTorch, Hugging Face Transformers.
+        ◦ Ejemplo: Entrenar un modelo para generar respuestas coherentes en base al contexto de la conversación.
+    
+    4. Análisis de sentimientos (por ejemplo, determinar si un comentario es positivo o negativo)
+        ◦ Algoritmo: Regresión Logística, Redes Neuronales Convolucionales (CNN), o Transformers.
+        ◦ Librerías: Scikit-learn, TensorFlow, PyTorch, Hugging Face Transformers.
+        ◦ Ejemplo: Clasificar reseñas de usuarios como positivas, negativas o neutrales.
+    
+    5. Detección de spam en mensajes
+        ◦ Algoritmo: Naive Bayes, Random Forest, o Redes Neuronales.
+        ◦ Librerías: Scikit-learn, TensorFlow, PyTorch.
+        ◦ Ejemplo: Clasificar correos electrónicos o mensajes como spam o no spam.
+    
+    6. Predicción de ventas o tendencias
+        ◦ Algoritmo: Regresión Lineal, ARIMA, o Redes Neuronales Recurrentes (RNN).
+        ◦ Librerías: Scikit-learn, Statsmodels, TensorFlow, PyTorch.
+        ◦ Ejemplo: Predecir las ventas futuras en base a datos históricos.
+    
+    7. Reconocimiento de voz para comandos de voz en un chatbot
+        ◦ Algoritmo: Redes Neuronales Convolucionales (CNN), Redes Neuronales Recurrentes (RNN), o Transformers.
+        ◦ Librerías: TensorFlow, PyTorch, librosa.
+        ◦ Ejemplo: Convertir comandos de voz en texto para que el chatbot los procese.
+    
+    8. Detección de fraudes en transacciones
+        ◦ Algoritmo: Random Forest, Gradient Boosting Machines (GBM), o Redes Neuronales.
+        ◦ Librerías: Scikit-learn, XGBoost, TensorFlow.
+        ◦ Ejemplo: Identificar transacciones fraudulentas en base a patrones anómalos.
+    
+    9. Clasificación de imágenes (por ejemplo, reconocer objetos en fotos)
+        ◦ Algoritmo: Redes Neuronales Convolucionales (CNN).
+        ◦ Librerías: TensorFlow, PyTorch, Keras.
+        ◦ Ejemplo: Clasificar imágenes en categorías como "gato", "perro", "coche", etc.
+    10. Optimización de rutas (por ejemplo, para un chatbot de entrega)
+        ◦ Algoritmo: Algoritmos Genéticos, Dijkstra, o Simulated Annealing.
+        ◦ Librerías: NetworkX, Scipy.
+        ◦ Ejemplo: Encontrar la ruta más corta para un repartidor en base a la ubicación de los clientes.
+    11. Traducción automática de idiomas
+        ◦ Algoritmo: Seq2Seq (Sequence-to-Sequence), Transformers.
+        ◦ Librerías: TensorFlow, PyTorch, Hugging Face Transformers.
+        ◦ Ejemplo: Traducir texto de un idioma a otro en tiempo real.
+    12. Generación de texto creativo (por ejemplo, para un chatbot que escribe historias)
+        ◦ Algoritmo: GPT (Generative Pre-trained Transformer).
+        ◦ Librerías: Hugging Face Transformers, TensorFlow, PyTorch.
+        ◦ Ejemplo: Generar texto coherente y creativo en base a un prompt inicial.
+    13. Detección de anomalías en datos
+        ◦ Algoritmo: Isolation Forest, Autoencoders, o One-Class SVM.
+        ◦ Librerías: Scikit-learn, TensorFlow, PyTorch.
+        ◦ Ejemplo: Identificar transacciones o comportamientos inusuales en un conjunto de datos.
+    14. Clasificación de correos electrónicos en categorías
+        ◦ Algoritmo: Naive Bayes, SVM, o Redes Neuronales.
+        ◦ Librerías: Scikit-learn, TensorFlow, PyTorch.
+        ◦ Ejemplo: Clasificar correos en categorías como "trabajo", "personal", "spam", etc.
+    15. Predicción de precios (por ejemplo, precios de acciones o productos)
+        ◦ Algoritmo: Regresión Lineal, Redes Neuronales Recurrentes (RNN), o LSTM.
+        ◦ Librerías: Scikit-learn, TensorFlow, PyTorch.
+        ◦ Ejemplo: Predecir el precio futuro de una acción en base a datos históricos.
+
+CREATE TABLE books (
+bookId character varying(50),
+title character varying(255),
+series character varying(255),
+author character varying(255),
+rating numeric,
+description text,
+language character varying(255),
+isbn character varying(255),
+genres text[],
+characters text[],
+bookFormat character varying(255),
+edition character varying(255),
+pages integer,
+publisher character varying(255),
+publishDate date,
+firstPublishDate date,
+awards text[],
+numRatings integer,
+ratingsByStars numeric[],
+likedPercent numeric,
+setting text[],
+coverImg character varying(255),
+bbeScore numeric,
+bbeVotes integer,
+price numeric
+);
+description
+language
+isbn
+genres
+characters
+bookFormat
+edition
+pages
+publisher
+publishDate
+firstPublishDate
+awards
+numRatings
+ratingsByStars
+likedPercent
+setting
+coverImg
+bbeScore
+bbeVotes
+price
+);
