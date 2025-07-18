@@ -19,5 +19,4 @@ __pycache__/
 # Modelos o datos pesados
 *.h5
 *.pkl
-*.csv
 *.json
